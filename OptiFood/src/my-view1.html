@@ -82,7 +82,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var ing = global.ingredient;
       var cond = global.condition;
       var response = "You are looking for " + ing + " with the least amount of " + cond;
-      var result = "This is what we found: " + findName(ing);
+      var result = "The id of this product is: " + findName(ing);
       document.getElementById("p1").style.display = "block";
       document.getElementById("p2").innerHTML = response;
       document.getElementById("p3").innerHTML = result;
@@ -95,16 +95,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     function findName(ingre) {
-      for (var i = 0; i < Object.keys(FP).length; i++) {
+      var results = []
+      for (var i = 0; i <= Object.keys(FP.id).length; i++) {
         if(FP.id[i] === ingre) {
-          return true;
+          results.push(i);
         }
       }
+      global = results
+      return results
     }
     // TEST FUNCTIONS
     function getDB() {
       return FP.id[2];
      }
+    function getCal() {
+      
+    }
     // submitOptions.addEventListener('iron-form-submit', function(event) {
     //   this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
     // });
