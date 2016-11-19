@@ -1,13 +1,4 @@
 <!--
-@Author: Uran Axel <mineuran>
-@Date:   2016-08-30T00:00:58+02:00
-@Email:  axel.ursc@gmail.com
-@Last modified by:   mineuran
-@Last modified time: 2016-11-19T14:57:18+01:00
--->
-
-
-<!--
 @license
 Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -29,6 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+
 <link rel="import" href="my-icons.html">
 
 <dom-module id="my-app">
@@ -81,15 +74,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <app-drawer-layout fullbleed>
       <!-- Drawer content -->
-      <app-drawer>
+      <!-- <app-drawer>
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
-          <a name="view4" href="/view4">View Four</a>
+          <a name="view1" href="/view1">Ingredients</a>
+          <a name="view2" href="/view2">Recipes</a>
+          <a name="view3" href="/view3">You</a>
         </iron-selector>
-      </app-drawer>
+      </app-drawer> -->
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
@@ -97,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div main-title>OptiFood - Find the best food for you!</div>
           </app-toolbar>
         </app-header>
 
@@ -109,7 +101,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <my-view1 name="view1"></my-view1>
           <my-view2 name="view2"></my-view2>
           <my-view3 name="view3"></my-view3>
-          <my-view4 name="view4"></my-view4>
           <my-view404 name="view404"></my-view404>
         </iron-pages>
       </app-header-layout>

@@ -1,0 +1,92 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<!-- IRON -->
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+<!-- PAPER -->
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view1">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+      paper-button.fancy {
+        background: green;
+        color: yellow;
+      }
+
+      paper-button.fancy:hover {
+        background: lime;
+      }
+    </style>
+
+    <div class="card">
+      <div class="circle">1</div>
+      <h1>What Ingredient do you want?</h1>
+      <input is="iron-input" value="{{value::input}}">
+      <br><br>
+      <i>Output: </i> <b>{{value}}</b>
+      <br>
+      <paper-button id="my-paper-button" class="fancy" onclick="updateValue">Press me</paper-button>
+    </div>
+    <div class="card">
+      <p>You can also submit this form by pressing "Enter" in the input</p>
+      <form is="iron-form" method="get" action="/" id="submitOptions">
+        <paper-input name="ingredient" label="Ingredient" required></paper-input>
+        <br>
+        <paper-input name="condition" label="Condition" required></paper-input>
+        <br>
+        <paper-input name="quantity" label="Quantity [gr] (optional)" ></paper-input>
+        <paper-button raised onclick="_submit(event)">Submit</paper-button>
+        <paper-button raised onclick="_reset(event)">Reset</paper-button>
+
+        <div class="output"></div>
+      </form>
+      <form id="form" onsubmit="return false;">
+        <paper-input type="text" id="userInput" />
+        <input type="submit" onclick="othername();" />
+      </form>
+
+    </div>
+  </template>
+
+  <script>
+    var global;
+
+    Polymer({
+      is: 'my-view1',
+    });
+    function _submit(event) {
+      Polymer.dom(event).localTarget.parentElement.submit();
+      global = Polymer.dom(event).localTarget.parentElement.serialize();
+    }
+    function _reset(event) {
+      var form = Polymer.dom(event).localTarget.parentElement
+      form.reset();
+      form.querySelector('.output').innerHTML = '';
+    }
+    submitOptions.addEventListener('iron-form-submit', function(event) {
+      this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+    });
+    function othername() {
+        var input = document.getElementById("userInput").value;
+        alert(input);
+    }
+  </script>
+</dom-module>
