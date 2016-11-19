@@ -77,6 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view1',
     });
     function _submit(event) {
+      //window.alert(FP.id[1]);
       Polymer.dom(event).localTarget.parentElement.submit();
       global = Polymer.dom(event).localTarget.parentElement.serialize();
       var ing = global.ingredient;
@@ -87,8 +88,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       document.getElementById("p1").style.display = "block";
       document.getElementById("p2").innerHTML = response;
       document.getElementById("p3").innerHTML = result;
-
     }
+
     function _reset(event) {
       var form = Polymer.dom(event).localTarget.parentElement
       form.reset();
@@ -100,6 +101,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       for (var i = 0; i <= Object.keys(FP.id).length; i++) {
         if(FP.id[i] === ingre) {
           results.push(i);
+      for (var i = 0; i < FP.length; i++) {
+        if(FP.id[i] == ingre) {
+          return true;
         }
       }
       global = results
@@ -109,6 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     function getDB() {
       return FP.id[2];
      }
+<<<<<<< Updated upstream
     function constraint(id_num, constr) {
       var lowest = FP.constr[0];
       for (var i = 0; i <= Object.keys(id_num).length; i++) {
@@ -118,10 +123,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       return lowest;
     }
+=======
+    function getCal() {}
+>>>>>>> Stashed changes
     // submitOptions.addEventListener('iron-form-submit', function(event) {
     //   this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
     // });
   </script>
   <!-- TEST FILE -->
   <script src="FP.js"></script>
+
+  <script src="filtered_products.json">
+  window.alert(filtered_products.json);
+
+  </script>
+
 </dom-module>
