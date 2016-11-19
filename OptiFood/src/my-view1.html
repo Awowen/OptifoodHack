@@ -82,12 +82,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var ing = global.ingredient;
       var cond = global.condition;
       var response = "You are looking for " + ing + " with the least amount of " + cond;
-      if (!findName) {
-        document.getElementById("p3").style.color = "red";
-      }
-      else {
-        document.getElementById("p3").style.color = "green"
-      }
       var result = "This is what we found: " + findName(ing);
       document.getElementById("p1").style.display = "block";
       document.getElementById("p2").innerHTML = response;
@@ -101,13 +95,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     function findName(ingre) {
-      for (var i = 0; i < FP.length; i++) {
-        if(FP[i].id == ingre) {
+      for (var i = 0; i < Object.keys(FP).length; i++) {
+        if(FP.id[i] === ingre) {
           return true;
         }
       }
     }
-    // TEST FUNCTION
+    // TEST FUNCTIONS
     function getDB() {
       return FP.id[2];
      }
