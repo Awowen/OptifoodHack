@@ -3,7 +3,7 @@
 @Date:   2016-11-19T14:23:54+01:00
 @Email:  axel.ursc@gmail.com
 @Last modified by:   mineuran
-@Last modified time: 2016-11-19T14:38:11+01:00
+@Last modified time: 2016-11-19T14:52:41+01:00
 -->
 
 
@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-slider/paper-slider.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view4">
@@ -29,13 +30,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
     </style>
-
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View 4</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+  <h1>New view</h1>
+  <paper-slider min="-100" max="100" value="50"></paper-slider>
   </template>
 
   <script>
