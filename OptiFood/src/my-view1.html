@@ -82,7 +82,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       var ing = global.ingredient;
       var cond = global.condition;
       var response = "You are looking for " + ing + " with the least amount of " + cond;
-      var result = "The id of this product is: " + findName(ing);
+      var result = "The ids of this product is: " + findName(ing);
+      var low = "The lowest amount of " + cond + " you could have is:" + constraint(findName(ing), cond)
       document.getElementById("p1").style.display = "block";
       document.getElementById("p2").innerHTML = response;
       document.getElementById("p3").innerHTML = result;
@@ -108,8 +109,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     function getDB() {
       return FP.id[2];
      }
-    function getCal() {
-      
+    function constraint(id_num, constr) {
+      var lowest = FP.constr[0];
+      for (var i = 0; i <= Object.keys(id_num).length; i++) {
+        if(FP.constr[i] <= lowest) {
+          lowest = FP.constr[i]
+        }
+      }
+      return lowest;
     }
     // submitOptions.addEventListener('iron-form-submit', function(event) {
     //   this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
