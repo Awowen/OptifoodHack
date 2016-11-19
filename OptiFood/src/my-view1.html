@@ -63,6 +63,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="card" id="p1" style="display: none">
           <p id="p2"></p>
           <p id="p3"></p>
+          <p id="p4"></p>
         </div>
 
       </form>
@@ -77,18 +78,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'my-view1',
     });
     function _submit(event) {
+      //window.alert(FP.id[1]);
       Polymer.dom(event).localTarget.parentElement.submit();
       global = Polymer.dom(event).localTarget.parentElement.serialize();
       var ing = global.ingredient;
       var cond = global.condition;
       var response = "You are looking for " + ing + " with the least amount of " + cond;
       var result = "The ids of this product is: " + findName(ing);
-      var low = "The lowest amount of " + cond + " you could have is:" + constraint(findName(ing), cond)
+      var low = "The lowest amount of " + cond + " you could have is:" + constraint(findName(ing), cond);
       document.getElementById("p1").style.display = "block";
       document.getElementById("p2").innerHTML = response;
       document.getElementById("p3").innerHTML = result;
-
+      document.getElementById("p4").innerHTML = low;
     }
+
     function _reset(event) {
       var form = Polymer.dom(event).localTarget.parentElement
       form.reset();
@@ -102,7 +105,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           results.push(i);
         }
       }
-      global = results
       return results
     }
     // TEST FUNCTIONS
@@ -110,18 +112,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       return FP.id[2];
      }
     function constraint(id_num, constr) {
-      var lowest = FP.constr[0];
-      for (var i = 0; i <= Object.keys(id_num).length; i++) {
-        if(FP.constr[i] <= lowest) {
-          lowest = FP.constr[i]
+      var lowest = FP[constr][id_num[0]];
+      for (var i = 0; i <= id_num.length; i++) {
+        if(FP[constr][id_num[i]] <= lowest) {
+          lowest = FP[constr][id_num[i]]
         }
       }
       return lowest;
     }
-    // submitOptions.addEventListener('iron-form-submit', function(event) {
-    //   this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
-    // });
+
   </script>
-  <!-- TEST FILE -->
   <script src="FP.js"></script>
+
+
 </dom-module>
